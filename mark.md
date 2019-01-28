@@ -27,3 +27,16 @@ django源码主要在core, db两个包，其中db包代码量
     主要步骤：
         1. as_sql
         2. execute_sql
+        
+        
+get_wsgi_application()
+   1. django.setup
+      1.1 settings 
+          LazySettings() -- LazySettings(LazyObject)
+             懒加载：先加载global_settings，后加载自定义settings_module
+      1.2 configure_logging
+      1.3 apps.populate(settings.INSTALLED_APPS)（thread-safe）
+          self.app_configs -- AppConfig可作钩子
+          加载每个app下的models模块
+          
+   2. return WSGIHandler()
