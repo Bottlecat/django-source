@@ -18,9 +18,7 @@ django源码主要在core, db两个包，其中db包代码量
     total: 30120 lines
     
     涉及到元类、装饰器、描述器、inspect、yield、懒加载、type。
-    getattr\hasattr\setattr
-    import_module\
-    copy\deepcopy
+    getattr\hasattr\setattr\import_module\copy\deepcopy
     主要由Manager、QuerySet、Query、SQLCompiler四个类完成CURD。
     查询是懒查询，由_fetch_all完成真正的查询工作。
     还涉及到ModelIterable。
@@ -31,12 +29,11 @@ django源码主要在core, db两个包，其中db包代码量
         
 get_wsgi_application()
    1. django.setup
-      1.1 settings 
-          LazySettings() -- LazySettings(LazyObject)
-             懒加载：先加载global_settings，后加载自定义settings_module
-      1.2 configure_logging
-      1.3 apps.populate(settings.INSTALLED_APPS)（thread-safe）
-          self.app_configs -- AppConfig可作钩子
-          加载每个app下的models模块
+      - 1.1 settings 
+         - LazySettings() -- LazySettings(LazyObject)
+         - 懒加载：先加载global_settings，后加载自定义settings_module
+      - 1.2 configure_logging
+      - 1.3 apps.populate(settings.INSTALLED_APPS)（thread-safe）
+         - self.app_configs -- AppConfig可作钩子，加载每个app下的models模块
           
    2. return WSGIHandler()
