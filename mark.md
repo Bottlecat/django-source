@@ -37,8 +37,9 @@ get_wsgi_application()
          - self.app_configs -- AppConfig可作钩子，加载每个app下的models模块
            初始化models.py中的model过程：
                - 调用元类ModelBase__new__方法，获取该model的app_config，添加_meta属性（Options实例）
-                   - 将每个Field实例绑定到model，并把Field实例添加到Options实例的属性中。
-                   
+               
+                  、、、
+                       将每个Field实例绑定到model，并把Field实例添加到Options实例的属性中。
                        self.set_attributes_from_name(name)
                        cls._meta.add_field(self)
                        setattr(cls, self.attname, DeferredAttribute(self.attname))
@@ -46,11 +47,15 @@ get_wsgi_application()
                             Field、AutoField、DateField、
                             RelatedField、ForeignObject、ManyToManyField
                        ForeignKey实例的remote_field是ManyToOneRel
+                  、、、     
                        
-                   - 自动添加主键AutoField
-                   - 自动添加objects，即Manager实例
-                     objects是QuerySet的代理。
-                   - register_model in apps   
+               - 自动添加主键AutoField
+               - 自动添加objects，即Manager实例，objects是QuerySet的代理。
+               - register_model in apps 
+               
+               
+                               
+                 
                      
    2. return WSGIHandler()
      load_middleware漏斗模型
