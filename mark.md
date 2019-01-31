@@ -34,8 +34,9 @@ get_wsgi_application()
          - 懒加载：先加载global_settings，后加载自定义settings_module
       - 1.2 configure_logging
       - 1.3 apps.populate(settings.INSTALLED_APPS)（thread-safe）
-         - self.app_configs -- AppConfig可作钩子，加载每个app下的models模块
-           初始化models.py中的model过程：
+      
+            self.app_configs -- AppConfig可作钩子，加载每个app下的models模块
+            初始化models.py中的model过程：
                - 调用元类ModelBase__new__方法，获取该model的app_config，添加_meta属性（Options实例）
                
                   、、、
