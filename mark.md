@@ -54,12 +54,10 @@ get_wsgi_application()
                - 自动添加objects，即Manager实例，objects是QuerySet的代理。
                - register_model in apps 
                
-               
-                               
-                 
-                     
    2. return WSGIHandler()
      load_middleware漏斗模型
      
-request process 
+management 
+runserver在'django.contrib.staticfiles'包。
+Performing system checks && check_migrations
              
