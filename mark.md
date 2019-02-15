@@ -60,4 +60,12 @@ get_wsgi_application()
 management 
 runserver在'django.contrib.staticfiles'包。
 Performing system checks && check_migrations
+
+
+request过程：
+  先正序执行before_process中间件,然后get_resolver查找目标函数，正序执行view中间件，如果没有response，执行目标函数，
+        目标函数exception则逆序执行exception中间件，如果没有response，raise。有则返回。
+  设置响应头，返回response.
+
+
              
